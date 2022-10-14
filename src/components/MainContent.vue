@@ -16,7 +16,15 @@
 
 <script>
 export default{
-    name : 'MainContent'
+    name : 'MainContent',
+    props : {
+        
+    },
+    data(){
+        return{
+            
+        }
+    }
     
 }
 

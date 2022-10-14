@@ -12,25 +12,26 @@
                         </a>
                     </div>
                 </header>
-                <MainContent/>
-
+                <!-- <MainContent :inputTitle="inputTitle"/> -->
+                <div id="capture" class="preview">
+                    <ul class="components" id="comp__opt1">
+                        <li class="render title" style="color : rgb(255, 255, 255); font-size: 54px;">
+                            {{inputTitle}}
+                        </li>
+                        <li class="render subtitle" style="color : rgb(255, 255, 255); border-top : 1px solid rgb(255, 255, 255); font-size: 24px; ">
+                            {{inputSubTitle}}
+                        </li>
+                        <li class="render category" style="color : rgb(255, 255, 255); font-size: 24px;">
+                            {{inpuThirdTitle}}
+                        </li>
+                    </ul>
+                </div>                
                 <div class="control__panel">
-                    <InputText/>
+                    <InputText @firstTitleValue="firstTitleValue" @subTitleValue="subTitleValue" @thirdTitleValue="thirdTitleValue"/>
                     <BackgroundBtn/>
                     <ThumbnailBtn/>
-                    
-                    <div class="text__style">
-                        <span class="textstyle__txt">텍스트 스타일 변경</span>
-                        <div id="textstyle__btn__container" class="btns">
-                            <button class="btn text__btn text__shadow">텍스트 그림자</button>
-                            <button class="btn text__btn text__invert">텍스트 색상 반전</button>
-                            <button class="btn text__btn text__size">제목 크기 작게</button>
-                        </div>
-                    </div>
-                    <div class="master__panel">
-                        <button class="btn" id="initialize">초기화</button>
-                        <button class="btn" id="export">완료 및 이미지화</button>
-                    </div>
+                    <TextStyleBtn />
+                    <MasterBtn />
                 </div>
             </article>
             <div class="copyright">
@@ -45,17 +46,40 @@
 
 <script>
 //import HomeFooter from '../components/Footer.vue'
-import MainContent from '../components/MainContent.vue'
+// import MainContent from '../components/MainContent.vue'
 import InputText from '../components/InputText.vue'
 import BackgroundBtn from '../components/BackgroundBtn.vue'
 import ThumbnailBtn from '../components/ThumbnailBtn.vue'
+import TextStyleBtn from '../components/TextStyleBtn.vue'
+import MasterBtn from '../components/MasterBtn.vue'
+//import html2canvas from 'html2canvas';
 export default{
     components : {
         //HomeFooter
-        MainContent,
+        //MainContent,
         InputText,
         BackgroundBtn,
-        ThumbnailBtn
+        ThumbnailBtn,
+        TextStyleBtn,
+        MasterBtn
+    },
+    data(){
+        return{
+            inputTitle : '제목을 입력하세요',
+            inputSubTitle : '부제목을 입력하세요',
+            inpuThirdTitle : '분류를 입력하세요'
+        }
+    },
+    methods:{
+        firstTitleValue(value){
+            this.inputTitle = value;
+        },
+        subTitleValue(value){
+            this.inputSubTitle = value;
+        },
+        thirdTitleValue(value){
+            this.inpuThirdTitle = value;
+        }
     }
 
 }
