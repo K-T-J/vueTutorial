@@ -12,20 +12,7 @@
                         </a>
                     </div>
                 </header>
-                <!-- <MainContent :inputTitle="inputTitle"/> -->
-                <div id="capture" class="preview">
-                    <ul class="components" id="comp__opt1">
-                        <li class="render title" style="color : rgb(255, 255, 255); font-size: 54px;">
-                            {{inputTitle}}
-                        </li>
-                        <li class="render subtitle" style="color : rgb(255, 255, 255); border-top : 1px solid rgb(255, 255, 255); font-size: 24px; ">
-                            {{inputSubTitle}}
-                        </li>
-                        <li class="render category" style="color : rgb(255, 255, 255); font-size: 24px;">
-                            {{inpuThirdTitle}}
-                        </li>
-                    </ul>
-                </div>                
+                <MainContent :inputTitle="inputTitle" :inputSubTitle="inputSubTitle" :inpuThirdTitle="inpuThirdTitle"/>
                 <div class="control__panel">
                     <InputText @firstTitleValue="firstTitleValue" @subTitleValue="subTitleValue" @thirdTitleValue="thirdTitleValue"/>
                     <BackgroundBtn/>
@@ -46,7 +33,7 @@
 
 <script>
 //import HomeFooter from '../components/Footer.vue'
-// import MainContent from '../components/MainContent.vue'
+import MainContent from '../components/MainContent.vue'
 import InputText from '../components/InputText.vue'
 import BackgroundBtn from '../components/BackgroundBtn.vue'
 import ThumbnailBtn from '../components/ThumbnailBtn.vue'
@@ -56,7 +43,7 @@ import MasterBtn from '../components/MasterBtn.vue'
 export default{
     components : {
         //HomeFooter
-        //MainContent,
+        MainContent,
         InputText,
         BackgroundBtn,
         ThumbnailBtn,

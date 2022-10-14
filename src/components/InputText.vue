@@ -16,7 +16,6 @@
         },
         methods:{
             firstTitle(e){
-                console.log(e);
                 this.$emit('firstTitleValue' , e.target.value);
             },
             subTitle(e){
