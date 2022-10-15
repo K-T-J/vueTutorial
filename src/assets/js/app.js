@@ -69,48 +69,48 @@ const backgroundBtns = document.querySelector(
 ).children;
 const componentsBtns = document.querySelectorAll('.component__opt');
 
-const randomRGB = function () {
-  let rgb = '';
-  rgb += (Math.floor(Math.random() * 90 + 1) + 150)
-    .toString(16)
-    .padStart(2, '0');
-  rgb += (Math.floor(Math.random() * 90 + 1) + 150)
-    .toString(16)
-    .padStart(2, '0');
-  rgb += (Math.floor(Math.random() * 90 + 1) + 150)
-    .toString(16)
-    .padStart(2, '0');
-  return rgb;
-};
+// const randomRGB = function () {
+//   let rgb = '';
+//   rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+//     .toString(16)
+//     .padStart(2, '0');
+//   rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+//     .toString(16)
+//     .padStart(2, '0');
+//   rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+//     .toString(16)
+//     .padStart(2, '0');
+//   return rgb;
+// };
 
-const changeBackground = function () {
-  const rgb = randomRGB();
+// const changeBackground = function () {
+//   const rgb = randomRGB();
 
-  [...backgroundBtns].forEach((e) => {
-    e.classList.remove('selected');
-  });
-  randomSolidBtn.classList.add('selected');
+//   [...backgroundBtns].forEach((e) => {
+//     e.classList.remove('selected');
+//   });
+//   randomSolidBtn.classList.add('selected');
 
-  domBody.style.background = preview.style.background = '';
-  domBody.style.backgroundColor = preview.style.backgroundColor = `#${rgb}`;
-};
+//   domBody.style.background = preview.style.background = '';
+//   domBody.style.backgroundColor = preview.style.backgroundColor = `#${rgb}`;
+// };
 
-randomSolidBtn.addEventListener('click', changeBackground);
+// randomSolidBtn.addEventListener('click', changeBackground);
 
-const changeGradient = function () {
-  const rgb1 = randomRGB();
-  const rgb2 = randomRGB();
+// const changeGradient = function () {
+//   const rgb1 = randomRGB();
+//   const rgb2 = randomRGB();
 
-  [...backgroundBtns].forEach((e) => {
-    e.classList.remove('selected');
-  });
-  randomGradientBtn.classList.add('selected');
+//   [...backgroundBtns].forEach((e) => {
+//     e.classList.remove('selected');
+//   });
+//   randomGradientBtn.classList.add('selected');
 
-  domBody.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`;
-  preview.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`;
-};
+//   domBody.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`;
+//   preview.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`;
+// };
 
-randomGradientBtn.addEventListener('click', changeGradient);
+// randomGradientBtn.addEventListener('click', changeGradient);
 
 // COMPONENT LAYOUT
 

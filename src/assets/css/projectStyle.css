@@ -6,11 +6,21 @@
 
 body{
     position: relative;
-    /* background-color: #f4f4f4; */
-    background-color: cyan;
+    background: #f4f4f4;
     height: 100vh;
     min-height: 1220px;
     font-family: 'Noto Sans KR', sans-serif ;
+ }
+ body::after{
+    position: fixed;
+    content: '';
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+    backdrop-filter: blur(10px);
  }
 section.wrapper{
     margin: 0 auto;
@@ -87,6 +97,7 @@ ul{
     position: relative;
     display: block;
     top: 140px;
+    font-size: 54px;
     font-weight: 500;
 }
 #comp__opt1 .subtitle{
