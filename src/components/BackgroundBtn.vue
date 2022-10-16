@@ -75,7 +75,7 @@
             alert('올바르지 않은 URL입니다 😨');
             return;
           }
-
+          
           this.domBody.style.background = this.preview.style.background = `url('${imgUrl}')`;
           this.domBody.style.backgroundSize = this.preview.style.backgroundSize = 'cover'; //cover : 배경을 사용하는 요소를 다 채울 수 있게 이미지를 확대 또는 축소한다 가로 세로 비율을 유지한다
           this.domBody.style.backgroundRepeat = this.preview.style.backgroundRepeat = 'no-repeat'; // background-repeat : 배경 이미지의 반복 여부와 반복 방향을 정한다 no-repeat : 반복하지 않는다
@@ -90,12 +90,11 @@
           }
           value.classList.add('selected');
         }
-
-
-
       },
       beforeUpdate(){
-        this.randomGradientBtn = []; //초기화
+        this.randomGradientBtn = null; //초기화
+        this.randomSolidBtn = null;
+        this.imgUrlBtn = null;
       }
   }
 
