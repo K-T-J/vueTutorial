@@ -12,6 +12,12 @@
 <script>
   export default{
       name : 'BackgroundBtn',
+      props:{
+        preview1: {
+            type:Object,
+            default:()=>{}
+        },
+      },
       data(){
         return{
           backgroundBtns : null,
@@ -56,7 +62,6 @@
           this.selectedNow(this.randomGradientBtn);
           this.domBody.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`;
           this.preview.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`; // linear-gradient: 두 개 이상의 색상 간의 점진적 전환으로 구성된 이미지를 만듬
-
         },
         randomSolid(){
           this.preview = document.querySelector('.preview');

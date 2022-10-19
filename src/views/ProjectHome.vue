@@ -12,10 +12,10 @@
                         </a>
                     </div>
                 </header>
-                <MainContent :inputTitle="inputTitle" :inputSubTitle="inputSubTitle" :inpuThirdTitle="inpuThirdTitle"/>
+                <MainContent :inputTitle="inputTitle" :inputSubTitle="inputSubTitle" :inpuThirdTitle="inpuThirdTitle" @MainPreVuewVal="MainPreVue"/>
                 <div class="control__panel">
                     <InputText @firstTitleValue="firstTitleValue" @subTitleValue="subTitleValue" @thirdTitleValue="thirdTitleValue"/>
-                    <BackgroundBtn/>
+                    <BackgroundBtn :preview1="mainPreVueVal"/>
                     <ThumbnailBtn/>
                     <TextStyleBtn />
                     <MasterBtn />
@@ -28,6 +28,8 @@
                 </a>
             </div>
         </section>
+        <section class="mod capture_modal hidden"></section>
+        <div class="mod overlay hidden" @click="removeCapture"></div>
     </div>
 </template> 
 
@@ -54,7 +56,8 @@ export default{
         return{
             inputTitle : '제목을 입력하세요',
             inputSubTitle : '부제목을 입력하세요',
-            inpuThirdTitle : '분류를 입력하세요'
+            inpuThirdTitle : '분류를 입력하세요',
+            mainPreVueVal : null,
         }
     },
     methods:{
@@ -66,7 +69,17 @@ export default{
         },
         thirdTitleValue(value){
             this.inpuThirdTitle = value;
+        },
+        removeCapture(){
+            const captureModal = document.querySelector('.capture_modal');
+            const mod = document.querySelectorAll('.mod');
+            captureModal.removeChild(captureModal.firstElementChild);
+            mod.forEach((e) => e.classList.add('hidden'));
+        },
+        MainPreVue(preViewVal){
+            this.mainPreVueVal = preViewVal;
         }
+
     }
 
 }

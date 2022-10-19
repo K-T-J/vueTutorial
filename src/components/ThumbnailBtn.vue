@@ -29,13 +29,10 @@ export default{
       }
       e.target.classList.add('selected');
     },
-
   },
   beforeUpdate(){
     this.componentsBtns = null;
   }
-
-  
 }
 
 </script>

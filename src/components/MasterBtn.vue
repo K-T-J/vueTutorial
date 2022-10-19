@@ -6,12 +6,17 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas"
+
 export default{
   name : "MasterBtn",
   data(){
     return{
       domBody : document.body,
     }
+  },
+  mounted(){
+    this.initBtn();
   },
   methods:{
     initBtn(){
@@ -24,6 +29,7 @@ export default{
       const renderTxt = document.querySelectorAll(".render");
       const componentsBtns = document.querySelectorAll('.component__opt');
 
+      
       //preview, body 초기화
       this.domBody.style.background = "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat";
       preview.style.background = "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat";
@@ -59,7 +65,20 @@ export default{
 
     },
     produceImageBtn(){
-      
+      const captureModal = document.querySelector('.capture_modal');
+      const mod = document.querySelectorAll('.mod');
+
+      html2canvas(document.querySelector('#capture'),{
+        logging: true, //디버그 목적으로 로깅 활성화
+        letterRendering: 1,
+        allowTaint: true, //교차 출처 이미지가 캔버스를 오염시키는 것을 허용할지 여부
+        useCORS: true, //CORS를 사용하여 서버에서 이미지 로드 시도 여부
+      }).then((canvas) => {
+        captureModal.appendChild(canvas).classList.add('canvas'); //appendChild : 선택한 요소 안에 자식요소를 추가한다.
+        console.log(captureModal);
+      });
+
+      mod.forEach((e) => e.classList.remove('hidden'));
     }
   }
 }

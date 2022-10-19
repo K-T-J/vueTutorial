@@ -269,6 +269,5 @@ const renderTxt = document.querySelectorAll('.render');
 init();
 
 const msg = '%cWonkook Lee ⓒ oneook';
-const css =
-  "font-size: 2em; color: #FEDC45; background-color: #000;font-family: 'Noto Sans KR';";
+const css = "font-size: 2em; color: #FEDC45; background-color: #000;font-family: 'Noto Sans KR';";
 console.log(msg, css);
