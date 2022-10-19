@@ -221,6 +221,7 @@ input.input__field{
     float: right;
 }
 .btn{
+    /*margin-right: 10px;*/
     width: 192px;
     height: 40px;
     border-radius: 20px;
@@ -231,6 +232,10 @@ input.input__field{
     font-weight: 400;
     cursor: pointer; /* 마우스 커서가 올라갔을 때 보여줄 모양을 지정 손가락 모양 (클릭 가능한 버튼) */
     transition: background-color 0.2s ease, color 0.2s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+.btn:hover{
+    background-color: #3b45ff;
+    color: #fff;
 }
 .selected{
     background-color: #3b45ff;

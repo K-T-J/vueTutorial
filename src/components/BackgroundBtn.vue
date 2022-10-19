@@ -58,7 +58,6 @@
           this.preview.style.background = `linear-gradient(to bottom, #${rgb1}, #${rgb2})`; // linear-gradient: 두 개 이상의 색상 간의 점진적 전환으로 구성된 이미지를 만듬
 
         },
-
         randomSolid(){
           this.preview = document.querySelector('.preview');
           const rgb = this.randomRGB();
