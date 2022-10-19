@@ -33,6 +33,7 @@ export default{
   },
   beforeUpdate(){
     this.componentsBtns = null;
+    console.log("1");
   }
 
   
