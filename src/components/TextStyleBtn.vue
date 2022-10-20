@@ -15,7 +15,28 @@ export default{
   data(){
     return{
       textStyleBtns : null,
-
+      renderTxt : null,
+      prevTitle : null,
+      prevSubtitle : null,
+      prevCategory : null,
+    }
+  },
+  props : {
+    mainContentVal:{
+      type : Object,
+      defualt : () => {}
+    },
+    title:{
+      type : Object,
+      defualt : () => {}
+    },
+    subTitle:{
+      type : Object,
+      defualt : () => {}
+    },
+    category:{
+      type : Object,
+      defualt : () => {}      
     }
   },
   methods:{
@@ -24,55 +45,48 @@ export default{
 
     },
     textShadowBtn(e){
-      const renderTxt = document.querySelectorAll('.render');
-      e.target.classList.toggle('selected'); // .toggle()은 선택한 요소가 보이면 보이지 않게, 보이지 않으면 보이게 한다
-      renderTxt.forEach((item) => {
-        if(e.target.classList.contains('selected')){//contains() : 텍스트 검색
-          item.style.textShadow = '2px 2px 4px rgba(0,0,0,0.4)';
+      e.target.classList.toggle("selected"); // .toggle()은 선택한 요소가 보이면 보이지 않게, 보이지 않으면 보이게 한다
+      for(let i = 0; i < this.renderTxt.children.length; i++){
+        if(e.target.classList.contains("selected")){//contains() : 텍스트 검색
+          this.renderTxt.children[i].style.textShadow = "2px 2px 4px rgba(0,0,0,2)";
         }else{
-          item.style.textShadow = '';
+          this.renderTxt.children[i].style.textShadow = "";
         }
-      })
-
+      }
     },
     textInvertBtn(e){
       e.target.classList.toggle('selected');
-
-      const renderTxt = document.querySelectorAll('.render');
-      const prevSubtitle = document.querySelector('.subtitle');
-
-      renderTxt.forEach((item) => {
       
-        if(e.target.classList.contains('selected')){//contains() : 텍스트 검색
-          item.style.color = 'black';
-          prevSubtitle.style.borderTop = '1px solid #000000';
+      for(let i = 0; i < this.renderTxt.children.length; i++){
+        if(e.target.classList.contains("selected")){//contains() : 텍스트 검색
+          this.renderTxt.children[i].style.color = 'black';
+          this.prevSubtitle.style.borderTop = '1px solid #000000';
         }else{
-          item.style.color = '#ffffff';
-          prevSubtitle.style.borderTop = '1px solid #ffffff';
+          this.renderTxt.children[i].style.color = '#ffffff';
+          this.prevSubtitle.style.borderTop = '1px solid #ffffff';
         }
-      })
+      }
     },
     textSizeBtn(e){
-      const renderTxt = document.querySelectorAll('.render');
-      const prevTitle = document.querySelector('.title');
-      const prevSubtitle = document.querySelector('.subtitle');
-      const prevCategory = document.querySelector('.category');
-
       e.target.classList.toggle('selected');
-
-      renderTxt.forEach(() => {
-        if (e.target.classList.contains('selected')) {
-          prevTitle.style.fontSize = '46px';
-          prevSubtitle.style.fontSize = '22px';
-          prevCategory.style.fontSize = '22px';
+      for(let i = 0; i < this.renderTxt.children.length; i++){
+        if(e.target.classList.contains("selected")){//contains() : 텍스트 검색
+          this.prevTitle.style.fontSize = '46px';
+          this.prevSubtitle.style.fontSize = '22px';
+          this.prevCategory.style.fontSize = '22px';
         }else{
-          prevTitle.style.fontSize = '54px';
-          prevSubtitle.style.fontSize = '24px';
-          prevCategory.style.fontSize = '24px';
+          this.prevTitle.style.fontSize = '54px';
+          this.prevSubtitle.style.fontSize = '24px';
+          this.prevCategory.style.fontSize = '24px';
         }
-      })
-
+      }
     }
+  },
+  mounted(){
+    this.renderTxt = this.$props.mainContentVal;
+    this.prevTitle = this.$props.title;
+    this.prevSubtitle = this.$props.subTitle;
+    this.prevCategory = this.$props.category;
   },
   beforeUpdate(){
     this.textStyleBtns = null;

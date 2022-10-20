@@ -12,12 +12,26 @@
                         </a>
                     </div>
                 </header>
-                <MainContent :inputTitle="inputTitle" :inputSubTitle="inputSubTitle" :inpuThirdTitle="inpuThirdTitle" @MainPreVuewVal="MainPreVue"/>
+                <MainContent 
+                    :inputTitle="inputTitle" 
+                    :inputSubTitle="inputSubTitle" 
+                    :inpuThirdTitle="inpuThirdTitle" 
+                    @mainPreVuewVal="mainPreVue"
+                    @mainComponentsVal="mainComponents"
+                    @mainTitleVal="mainTitle"
+                    @mainSubTitleVal="mainSubTitle"
+                    @mainCategoryVal="mainCategory"
+                 />
                 <div class="control__panel">
                     <InputText @firstTitleValue="firstTitleValue" @subTitleValue="subTitleValue" @thirdTitleValue="thirdTitleValue"/>
-                    <BackgroundBtn :preview1="mainPreVueVal"/>
-                    <ThumbnailBtn/>
-                    <TextStyleBtn />
+                    <BackgroundBtn :preview="mainPreVueVal"/>
+                    <ThumbnailBtn :mainContentVal ="mainComponentsVal"/>
+                    <TextStyleBtn 
+                        :mainContentVal = "mainComponentsVal"
+                        :title ="mainTitleVal"
+                        :subTitle="mainSubTitleVal"
+                        :category="mainCategoryVal"
+                    />
                     <MasterBtn />
                 </div>
             </article>
@@ -58,6 +72,10 @@ export default{
             inputSubTitle : '부제목을 입력하세요',
             inpuThirdTitle : '분류를 입력하세요',
             mainPreVueVal : null,
+            mainComponentsVal : null,
+            mainTitleVal : null,
+            mainSubTitleVal : null,
+            mainCategoryVal : null
         }
     },
     methods:{
@@ -76,8 +94,20 @@ export default{
             captureModal.removeChild(captureModal.firstElementChild);
             mod.forEach((e) => e.classList.add('hidden'));
         },
-        MainPreVue(preViewVal){
+        mainPreVue(preViewVal){
             this.mainPreVueVal = preViewVal;
+        },
+        mainComponents(components){
+            this.mainComponentsVal = components;
+        },
+        mainTitle(titleVal){
+            this.mainTitleVal = titleVal;
+        },
+        mainSubTitle(subTitleVal){
+            this.mainSubTitleVal = subTitleVal;
+        },
+        mainCategory(categoryVal){
+            this.mainCategoryVal = categoryVal;
         }
 
     }

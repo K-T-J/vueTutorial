@@ -15,20 +15,31 @@ export default{
   data(){
     return{
       componentsBtns : null,
+      components : null
+    }
+  },
+  props:{
+    mainContentVal:{
+      type : Object,
+      default : () => {}
     }
   },
   methods:{
     refContainer(e){
-      this.componentsBtns = e.children;
+      this.componentsBtns = e;
     },
     totalTitleBtn(e){
-      document.querySelector('.components').id = e.target.dataset.set;
       
-      for(let i = 0; i< this.componentsBtns.length; i++){
-        this.componentsBtns[i].classList.remove('selected');
+      this.components.id = e.target.dataset.set;
+      
+      for(let i = 0; i< this.componentsBtns.children.length; i++){
+        this.componentsBtns.children[i].classList.remove('selected');
       }
       e.target.classList.add('selected');
     },
+  },
+  mounted(){
+    this.components = this.$props.mainContentVal;
   },
   beforeUpdate(){
     this.componentsBtns = null;
