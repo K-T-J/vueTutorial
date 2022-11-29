@@ -2,10 +2,7 @@
   <div
     class="body"
     :style="{
-      background:
-        'url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80)',
-      background: 'center center',
-      background: 'cover no-repeat rgb(120, 170, 249)',
+      background: initUrl,
     }"
   >
     <section class="wrapper">
@@ -24,6 +21,7 @@
           :inputTitle="inputTitle"
           :inputSubTitle="inputSubTitle"
           :inpuThirdTitle="inpuThirdTitle"
+          :randomGradientBtn="initUrl"
         />
         <div class="control__panel">
           <InputText
@@ -31,7 +29,11 @@
             @subTitleValue="subTitleValue"
             @thirdTitleValue="thirdTitleValue"
           />
-          <BackgroundBtn @randomGradient="randomGradient" />
+          <BackgroundBtn
+            @randomGradient="randomGradient"
+            @randomSolid="randomSolid"
+            @imgUrl="imgUrl"
+          />
           <ThumbnailBtn />
           <TextStyleBtn />
           <MasterBtn />
@@ -71,7 +73,9 @@ export default {
       inputTitle: "제목을 입력하세요",
       inputSubTitle: "부제목을 입력하세요",
       inpuThirdTitle: "분류를 입력하세요",
-      gradient: false,
+      randomValue: false,
+      initUrl:
+        "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat",
     };
   },
   methods: {
@@ -85,7 +89,30 @@ export default {
       this.inpuThirdTitle = value;
     },
     randomGradient() {
-      this.gradient = !this.gradient;
+      const rgb1 = this.randomRGB();
+      const rgb2 = this.randomRGB();
+      this.initUrl =
+        "linear-gradient(to bottom," + "#" + rgb1 + "," + "#" + rgb2 + ")"; // linear-gradient: 두 개 이상의 색상 간의 점진적 전환으로 구성된 이미지를 만듬
+    },
+    randomSolid() {
+      const rgb = this.randomRGB();
+      this.initUrl = "#" + rgb;
+    },
+    imgUrl(url) {
+      this.initUrl = "url(" + url + ") center center / cover no-repeat";
+    },
+    randomRGB() {
+      let rgb = "";
+      rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+        .toString(16)
+        .padStart(2, "0");
+      rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+        .toString(16)
+        .padStart(2, "0");
+      rgb += (Math.floor(Math.random() * 90 + 1) + 150)
+        .toString(16)
+        .padStart(2, "0");
+      return rgb;
     },
   },
 };
