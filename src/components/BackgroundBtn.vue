@@ -39,20 +39,20 @@ export default {
   },
   methods: {
     randomGradient() {
-      this.randomGradientBtn = !this.randomGradientBtn;
+      this.randomGradientBtn = true;
       this.randomSolidBtn = false;
       this.imgUrlBtn = false;
 
       this.$emit("randomGradient");
     },
     randomSolid() {
-      this.randomSolidBtn = !this.randomSolidBtn;
+      this.randomSolidBtn = true;
       this.randomGradientBtn = false;
       this.imgUrlBtn = false;
       this.$emit("randomSolid");
     },
     imgUrl() {
-      this.imgUrlBtn = !this.imgUrlBtn;
+      this.imgUrlBtn = true;
       this.randomGradientBtn = false;
       this.randomSolidBtn = false;
 

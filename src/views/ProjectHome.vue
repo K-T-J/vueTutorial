@@ -3,6 +3,7 @@
     class="body"
     :style="{
       background: initUrl,
+      color: backgroundColor,
     }"
   >
     <section class="wrapper">
@@ -22,6 +23,11 @@
           :inputSubTitle="inputSubTitle"
           :inpuThirdTitle="inpuThirdTitle"
           :randomGradientBtn="initUrl"
+          :thumbnailDataSet="thumbnailDataSet"
+          :textShadow="textShadow"
+          :textInvert="textInvert"
+          :textSize="textSize"
+          :init="init"
         />
         <div class="control__panel">
           <InputText
@@ -34,9 +40,17 @@
             @randomSolid="randomSolid"
             @imgUrl="imgUrl"
           />
-          <ThumbnailBtn />
-          <TextStyleBtn />
-          <MasterBtn />
+          <ThumbnailBtn
+            @totalTitleOpt1="totalTitleOpt1"
+            @totalTitleOpt2="totalTitleOpt2"
+            @totalTitleOpt3="totalTitleOpt2"
+          />
+          <TextStyleBtn
+            @textShadowBtn="textShadowBtn"
+            @textInvertBtn="textInvertBtn"
+            @textSizeBtn="textSizeBtn"
+          />
+          <MasterBtn @initBtn="initBtn" />
         </div>
       </article>
       <div class="copyright">
@@ -73,12 +87,18 @@ export default {
       inputTitle: "제목을 입력하세요",
       inputSubTitle: "부제목을 입력하세요",
       inpuThirdTitle: "분류를 입력하세요",
-      randomValue: false,
       initUrl:
         "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat",
+      backgroundColor: "78aaf9",
+      thumbnailDataSet: "",
+      textShadow: false,
+      textInvert: false,
+      textSize: false,
+      init: 0,
     };
   },
   methods: {
+    //InputText
     firstTitleValue(value) {
       this.inputTitle = value;
     },
@@ -88,6 +108,7 @@ export default {
     thirdTitleValue(value) {
       this.inpuThirdTitle = value;
     },
+    //BackgroundBtn
     randomGradient() {
       const rgb1 = this.randomRGB();
       const rgb2 = this.randomRGB();
@@ -113,6 +134,31 @@ export default {
         .toString(16)
         .padStart(2, "0");
       return rgb;
+    },
+    //ThumbnailBtn
+    totalTitleOpt1(value) {
+      this.thumbnailDataSet = value;
+    },
+    totalTitleOpt2(value) {
+      this.thumbnailDataSet = value;
+    },
+    totalTitleOpt3(value) {
+      this.thumbnailDataSet = value;
+    },
+    textShadowBtn() {
+      this.textShadow = !this.textShadow;
+    },
+    textInvertBtn() {
+      this.textInvert = !this.textInvert;
+    },
+    textSizeBtn() {
+      this.textSize = !this.textSize;
+    },
+    initBtn() {
+      this.init = ++this.init;
+      this.initUrl =
+        "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat";
+      this.backgroundColor = "#78aaf9";
     },
   },
 };

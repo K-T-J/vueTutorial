@@ -1,45 +1,76 @@
 <template>
   <div class="components__btns">
     <span class="components__txt">썸네일 구성 요소</span>
-    <div :ref="refContainer" id="components__btn__container" class="btns">
-        <button data-set="comp__opt1" class="btn component__opt" @click="totalTitleBtn">제목 / 부제목 / 분류</button>
-        <button data-set="comp__opt2" class="btn component__opt" @click="totalTitleBtn">제목 / 분류</button>
-        <button data-set="comp__opt3" class="btn component__opt" @click="totalTitleBtn">제목만</button>
+    <div id="components__btn__container" class="btns">
+      <button
+        data-set="comp__opt1"
+        class="btn component__opt"
+        :class="{
+          selected: componentsOpt1,
+        }"
+        @click="totalTitleOpt1"
+      >
+        제목 / 부제목 / 분류
+      </button>
+      <button
+        data-set="comp__opt2"
+        class="btn component__opt"
+        :class="{
+          selected: componentsOpt2,
+        }"
+        @click="totalTitleOpt2"
+      >
+        제목 / 분류
+      </button>
+      <button
+        data-set="comp__opt3"
+        class="btn component__opt"
+        :class="{
+          selected: componentsOpt3,
+        }"
+        @click="totalTitleOpt3"
+      >
+        제목만
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-export default{
-  name : 'ThumbnailBtn',
-  data(){
-    return{
-      componentsBtns : null,
-    }
+export default {
+  name: "ThumbnailBtn",
+  data() {
+    return {
+      componentsOpt1: true,
+      componentsOpt2: false,
+      componentsOpt3: false,
+    };
   },
-  methods:{
-    refContainer(e){
-      this.componentsBtns = e.children;
+  methods: {
+    totalTitleOpt1(e) {
+      this.componentsOpt1 = true;
+      this.componentsOpt2 = false;
+      this.componentsOpt3 = false;
+      this.$emit("totalTitleOpt1", e.target.dataset.set);
     },
-    totalTitleBtn(e){
-      document.querySelector('.components').id = e.target.dataset.set;
-      
-      for(let i = 0; i< this.componentsBtns.length; i++){
-        this.componentsBtns[i].classList.remove('selected');
-      }
-      e.target.classList.add('selected');
+    totalTitleOpt2(e) {
+      this.componentsOpt1 = false;
+      this.componentsOpt2 = true;
+      this.componentsOpt3 = false;
+      this.$emit("totalTitleOpt2", e.target.dataset.set);
     },
-
+    totalTitleOpt3(e) {
+      this.componentsOpt1 = false;
+      this.componentsOpt2 = false;
+      this.componentsOpt3 = true;
+      this.$emit("totalTitleOpt3", e.target.dataset.set);
+    },
   },
-  beforeUpdate(){
-    this.componentsBtns = null;
-    console.log("1");
-  }
-
-  
-}
-
+};
 </script>
 <style>
-
+.selected {
+  background-color: blue;
+  color: white;
+}
 </style>
