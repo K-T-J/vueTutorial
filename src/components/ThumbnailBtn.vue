@@ -39,12 +39,25 @@
 <script>
 export default {
   name: "ThumbnailBtn",
+  props: {
+    init: {
+      type: Number,
+      defualt: 0,
+    },
+  },
   data() {
     return {
       componentsOpt1: true,
       componentsOpt2: false,
       componentsOpt3: false,
     };
+  },
+  watch: {
+    init() {
+      this.componentsOpt1 = true;
+      this.componentsOpt2 = false;
+      this.componentsOpt3 = false;
+    },
   },
   methods: {
     totalTitleOpt1(e) {

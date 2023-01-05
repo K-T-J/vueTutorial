@@ -30,13 +30,25 @@
 <script>
 export default {
   name: "TextStyleBtn",
+  props: {
+    init: {
+      type: Number,
+      defualt: 0,
+    },
+  },
   data() {
     return {
-      textStyleBtns: null,
       textShadowSelect: false,
       textInvertSelect: false,
       textSizeSelect: false,
     };
+  },
+  watch: {
+    init() {
+      this.textShadowSelect = false;
+      this.textInvertSelect = false;
+      this.textSizeSelect = false;
+    },
   },
   methods: {
     textShadowBtn() {

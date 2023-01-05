@@ -30,12 +30,25 @@
 <script>
 export default {
   name: "BackgroundBtn",
+  props: {
+    init: {
+      type: Number,
+      defualt: 0,
+    },
+  },
   data() {
     return {
       randomGradientBtn: false,
-      randomSolidBtn: null,
-      imgUrlBtn: null,
+      randomSolidBtn: false,
+      imgUrlBtn: false,
     };
+  },
+  watch: {
+    init() {
+      this.randomGradientBtn = false;
+      this.randomSolidBtn = false;
+      this.imgUrlBtn = false;
+    },
   },
   methods: {
     randomGradient() {

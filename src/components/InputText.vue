@@ -7,6 +7,7 @@
       data-set="title"
       spellcheck="false"
       placeholder=">제목을 입력하세요"
+      v-model="firstTitleInput"
       :class="{
         selected: firstTitleSelect,
       }"
@@ -18,6 +19,7 @@
       data-set="subtitle"
       spellcheck="false"
       placeholder=">부제목을 입력하세요"
+      v-model="subTitleInput"
       @click="subTitleClick"
     />
     <input
@@ -26,7 +28,9 @@
       @keyup="thirdTitle"
       data-set="category"
       spellcheck="false"
+      v-model="categoryInput"
       placeholder=">분류를 입력하세요"
+      @click="categoryClick"
     />
   </div>
 </template>
@@ -34,25 +38,46 @@
 <script>
 export default {
   name: "InputText",
+  props: {
+    init: {
+      type: Number,
+      defualt: 0,
+    },
+  },
   data() {
     return {
       firstTitleSelect: true,
-      subTitleBtn: false,
-      thirdTitleBtn: false,
+      firstTitleInput: "",
+      subTitleInput: "",
+      categoryInput: "",
     };
+  },
+  watch: {
+    init() {
+      this.firstTitleSelect = true;
+      this.firstTitleInput = "";
+      this.subTitleInput = "";
+      this.categoryInput = "";
+    },
   },
   methods: {
     firstTitle(e) {
+      this.firstTitleInput = e.target.value;
       this.$emit("firstTitleValue", e.target.value);
     },
     subTitle(e) {
+      this.subTitleInput = e.target.value;
       this.$emit("subTitleValue", e.target.value);
     },
     subTitleClick() {
       this.firstTitleSelect = false;
     },
     thirdTitle(e) {
+      this.categoryInput = e.target.value;
       this.$emit("thirdTitleValue", e.target.value);
+    },
+    categoryClick() {
+      this.firstTitleSelect = false;
     },
   },
 };

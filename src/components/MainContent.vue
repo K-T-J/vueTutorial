@@ -126,12 +126,10 @@ export default {
     },
     textSize() {
       if (this.textSize) {
-        console.log("true");
         this.titleFontSize = "46px";
         this.subtitleFontSize = "22px";
         this.categoryFontSize = "22px";
       } else {
-        console.log("false");
         this.titleFontSize = "54px";
         this.subtitleFontSize = "24px";
         this.categoryFontSize = "24px";
@@ -141,6 +139,13 @@ export default {
       this.mainInit =
         "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat";
       this.colorInit = "#78aaf9";
+      this.textShadowValue = "";
+      this.renderTxt = "#ffffff";
+      this.prevSubtitle = "1px solid #ffffff";
+      this.titleFontSize = "54px";
+      this.subtitleFontSize = "24px";
+      this.categoryFontSize = "24px";
+      this.componentsId = "comp__opt1";
     },
   },
   methods: {},

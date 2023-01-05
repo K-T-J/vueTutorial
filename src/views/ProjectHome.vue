@@ -34,21 +34,25 @@
             @firstTitleValue="firstTitleValue"
             @subTitleValue="subTitleValue"
             @thirdTitleValue="thirdTitleValue"
+            :init="init"
           />
           <BackgroundBtn
             @randomGradient="randomGradient"
             @randomSolid="randomSolid"
             @imgUrl="imgUrl"
+            :init="init"
           />
           <ThumbnailBtn
             @totalTitleOpt1="totalTitleOpt1"
             @totalTitleOpt2="totalTitleOpt2"
             @totalTitleOpt3="totalTitleOpt2"
+            :init="init"
           />
           <TextStyleBtn
             @textShadowBtn="textShadowBtn"
             @textInvertBtn="textInvertBtn"
             @textSizeBtn="textSizeBtn"
+            :init="init"
           />
           <MasterBtn @initBtn="initBtn" />
         </div>
@@ -159,6 +163,9 @@ export default {
       this.initUrl =
         "url(https://images.unsplash.com/photo-1620121478247-ec786b9be2fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1489&q=80) center center / cover no-repeat";
       this.backgroundColor = "#78aaf9";
+      this.inputTitle = "제목을 입력하세요";
+      this.inputSubTitle = "부제목을 입력하세요";
+      this.inpuThirdTitle = "분류를 입력하세요";
     },
   },
 };
